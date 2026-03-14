@@ -1,0 +1,427 @@
+:root {
+  --bg-a: #f6f4e9;
+  --bg-b: #dcead8;
+  --surface: #ffffff;
+  --ink: #1f2a22;
+  --primary: #006a6a;
+  --danger: #b62121;
+  --accent-a: #ffaf2f;
+  --accent-b: #2f7dff;
+  --touch: 84px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top right, #fef8d8, transparent 40%),
+    radial-gradient(circle at bottom left, #d6f1ff, transparent 30%),
+    linear-gradient(140deg, var(--bg-a), var(--bg-b));
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.screen {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(4px);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 18px 40px rgba(0, 50, 40, 0.12);
+  animation: rise 0.35s ease-out;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.language-grid,
+.action-grid,
+.summary-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.language-btn,
+.keypad-key,
+.audio-help,
+.kiosk-input,
+.large-button {
+  min-height: var(--touch);
+  border-radius: 18px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.language-btn,
+.keypad-key {
+  background: #fff;
+  box-shadow: inset 0 0 0 3px #d4e7dd;
+  font-weight: 700;
+}
+
+.large-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 16px 22px;
+  background: #eef5f5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.large-button:disabled {
+  opacity: 0.5;
+}
+
+.large-button-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.12);
+  font-weight: 900;
+}
+
+.large-button-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.large-button-subtitle {
+  opacity: 0.78;
+}
+
+.primary {
+  background: linear-gradient(140deg, #007872, #09a86a);
+  color: #fff;
+}
+
+.action-consult {
+  background: linear-gradient(140deg, #ffca45, #ff992e);
+}
+
+.action-vitals {
+  background: linear-gradient(140deg, #57b5ff, #1f86ff);
+  color: #fff;
+}
+
+.action-history {
+  background: linear-gradient(140deg, #a5f09d, #46c375);
+}
+
+.control-end {
+  background: linear-gradient(140deg, #ff7f7f, #de3f3f);
+  color: #fff;
+}
+
+.control-mute {
+  background: linear-gradient(140deg, #f5dfa2, #e9b450);
+}
+
+.control-vitals {
+  background: linear-gradient(140deg, #95f3f1, #3bb9cf);
+}
+
+.card,
+.queue-card,
+.prescription-card,
+.awareness-video,
+.network-banner {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 22px rgba(0, 60, 40, 0.08);
+}
+
+.kiosk-input,
+select.kiosk-input {
+  width: 100%;
+  margin-bottom: 12px;
+  border: 3px solid #dbebe2;
+  padding: 12px 14px;
+}
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(70px, 1fr));
+  gap: 10px;
+}
+
+.vitals-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.vital-card {
+  border-radius: 16px;
+  padding: 14px;
+  color: #fff;
+}
+
+.vital-card h3 {
+  margin: 0 0 8px;
+}
+
+.vital-card p {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.vital-card p span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.vital-red { background: #f1495b; }
+.vital-blue { background: #2b6dff; }
+.vital-orange { background: #f18b35; }
+.vital-green { background: #27a86b; }
+.vital-purple { background: #7f49d1; }
+
+.instruction-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.instruction-step {
+  background: #fff7da;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 2px dashed #ffc14d;
+}
+
+.manual-vitals-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.manual-field {
+  display: grid;
+  gap: 8px;
+  background: #f7fbff;
+  border: 2px solid #d5e8f6;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.manual-field span {
+  font-weight: 700;
+}
+
+.queue-card {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.queue-item {
+  text-align: center;
+}
+
+.queue-item span {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.queue-item strong {
+  font-size: 2.2rem;
+}
+
+.video-layout {
+  position: relative;
+  min-height: 68vh;
+}
+
+.remote-video-shell {
+  position: relative;
+  height: 68vh;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #122728;
+}
+
+.remote-video,
+.local-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.local-video {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 28%;
+  height: 22%;
+  border-radius: 16px;
+  border: 3px solid #fff;
+  background: #0e1517;
+}
+
+.video-controls {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.3rem;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.video-error {
+  background: rgba(138, 0, 0, 0.55);
+}
+
+.floating-vitals {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 170px;
+}
+
+.awareness-placeholder {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border: 3px dashed #9cc3b5;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  padding: 16px;
+}
+
+.audio-help {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  min-width: 190px;
+  background: linear-gradient(140deg, #002f5f, #005b99);
+  color: #fff;
+  font-weight: 800;
+  z-index: 20;
+}
+
+.network-banner {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.offline {
+  border-left: 10px solid #ff8f2a;
+}
+
+.syncing {
+  border-left: 10px solid #1d8fd6;
+}
+
+.loading-screen {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.illustration-card {
+  margin: 16px 0;
+  border-radius: 20px;
+  min-height: 180px;
+  background: linear-gradient(160deg, #fff6d5, #d9f1ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration {
+  position: absolute;
+  bottom: 14px;
+  width: 120px;
+  height: 140px;
+  border-radius: 30px;
+}
+
+.illustration.doctor {
+  left: 18%;
+  background: linear-gradient(150deg, #89d1ff, #ffffff);
+}
+
+.illustration.patient {
+  right: 18%;
+  background: linear-gradient(150deg, #ffd6a5, #ffe9cf);
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .screen {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .video-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .local-video {
+    width: 38%;
+  }
+
+  .audio-help {
+    right: 10px;
+    bottom: 10px;
+    min-width: 160px;
+  }
+}

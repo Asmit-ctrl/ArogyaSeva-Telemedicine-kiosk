@@ -1,0 +1,94 @@
+{
+  "info": {
+    "name": "eArogyaSeva Telemedicine Kiosk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@earogyaseva.local\",\n  \"password\": \"Password123\",\n  \"role\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@earogyaseva.local\",\n  \"password\": \"Password123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Patients - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ramesh Kumar\",\n  \"age\": 42,\n  \"gender\": \"male\",\n  \"mobileNumber\": \"9876543210\",\n  \"village\": \"Rampur\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/patients/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "patients", "register"]
+        }
+      }
+    },
+    {
+      "name": "Doctors - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Dr. Asha\",\n  \"specialization\": \"General Medicine\",\n  \"licenseNumber\": \"LIC-2026-001\",\n  \"availability\": \"available\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/doctors/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "doctors", "register"]
+        }
+      }
+    },
+    {
+      "name": "Consultation - Video Placeholder",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/video/start",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "video", "start"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" }
+  ]
+}
