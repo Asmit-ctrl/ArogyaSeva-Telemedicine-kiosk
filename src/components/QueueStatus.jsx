@@ -13,6 +13,10 @@ export default function QueueStatus({ queue }) {
         <span>{t("waitTime")}</span>
         <strong>{queue.waitMinutes} min</strong>
       </div>
+      <div className="queue-item">
+        <span>Status</span>
+        <strong>{queue.status || "waiting"}</strong>
+      </div>
     </div>
   );
 }

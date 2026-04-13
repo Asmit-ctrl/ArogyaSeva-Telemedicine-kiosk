@@ -14,6 +14,13 @@ const doctorSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      unique: true,
+    },
     specialization: {
       type: String,
       required: true,
@@ -29,6 +36,30 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       enum: ["available", "busy", "offline"],
       default: "available",
+    },
+    languages: {
+      type: [String],
+      default: ["en", "hi"],
+    },
+    consultationFee: {
+      type: Number,
+      default: 250,
+      min: 0,
+    },
+    waitTimeMinutes: {
+      type: Number,
+      default: 5,
+      min: 0,
+    },
+    rating: {
+      type: Number,
+      default: 4.5,
+      min: 0,
+      max: 5,
+    },
+    locationTags: {
+      type: [String],
+      default: [],
     },
   },
   { timestamps: { createdAt: true, updatedAt: false } }

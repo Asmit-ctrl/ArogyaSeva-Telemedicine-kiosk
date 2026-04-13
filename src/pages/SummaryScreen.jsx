@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { sendPrescription } from "../services/api";
 import { usePatientStore } from "../store/patientStore";
 import PrescriptionCard from "../components/PrescriptionCard";
 import LargeButton from "../components/LargeButton";
@@ -10,27 +9,24 @@ export default function SummaryScreen() {
   const navigate = useNavigate();
   const patient = usePatientStore((state) => state.patient);
   const vitals = usePatientStore((state) => state.vitals);
+  const records = usePatientStore((state) => state.records);
+  const summary = usePatientStore((state) => state.summary);
   const clearPatient = usePatientStore((state) => state.clearPatient);
-  const resetVitals = usePatientStore((state) => state.resetVitals);
-
-  const sendSms = async () => {
-    await sendPrescription({ patientId: patient?.id, mode: "sms" });
-    alert("Prescription SMS queued/sent.");
-  };
+  const resetSession = usePatientStore((state) => state.resetSession);
 
   const finish = () => {
     clearPatient();
-    resetVitals();
+    resetSession();
     navigate("/");
   };
 
   return (
     <section className="screen">
       <h1>{t("prescriptionTitle")}</h1>
-      <PrescriptionCard patient={patient} vitals={vitals} />
+      <PrescriptionCard patient={patient} vitals={vitals} summary={summary} records={records} />
       <div className="summary-actions">
         <LargeButton title={t("printPrescription")} icon="PRN" className="action-vitals" onClick={() => window.print()} />
-        <LargeButton title={t("sendSMS")} icon="SMS" className="action-history" onClick={sendSms} />
+        <LargeButton title="Back to Dashboard" icon="DAS" className="action-history" onClick={() => navigate("/dashboard")} />
         <LargeButton title={t("finishSession")} icon="END" className="control-end" onClick={finish} />
       </div>
     </section>

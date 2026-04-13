@@ -12,9 +12,9 @@ const prescriptionRoutes = require("./routes/prescriptionRoutes");
 const authRoutes = require("./routes/authRoutes");
 const kioskRoutes = require("./routes/kioskRoutes");
 const videoRoutes = require("./routes/videoRoutes");
+const kioskFlowRoutes = require("./routes/kioskFlowRoutes");
 
 dotenv.config();
-connectDB();
 
 const app = express();
 
@@ -34,12 +34,19 @@ app.use("/api/consultations", consultationRoutes);
 app.use("/api/prescriptions", prescriptionRoutes);
 app.use("/api/kiosks", kioskRoutes);
 app.use("/api/video", videoRoutes);
+app.use("/api/kiosk-flow", kioskFlowRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+};
+
+startServer();

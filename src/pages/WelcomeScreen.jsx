@@ -23,7 +23,10 @@ export default function WelcomeScreen() {
         <div className="illustration doctor" />
         <div className="illustration patient" />
       </div>
-      <LargeButton title={t("continue")} icon="GO" className="primary" onClick={() => navigate("/login")} />
+      <div className="summary-actions">
+        <LargeButton title={t("continue")} icon="GO" className="primary" onClick={() => navigate("/login")} />
+        <LargeButton title="Doctor Portal" icon="DOC" className="action-consult" onClick={() => navigate("/doctor")} />
+      </div>
     </section>
   );
 }

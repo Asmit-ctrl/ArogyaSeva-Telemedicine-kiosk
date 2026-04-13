@@ -8,10 +8,16 @@ import "./styles.css";
 const WelcomeScreen = lazy(() => import("./pages/WelcomeScreen"));
 const LoginScreen = lazy(() => import("./pages/LoginScreen"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const SymptomsScreen = lazy(() => import("./pages/SymptomsScreen"));
 const VitalsScreen = lazy(() => import("./pages/VitalsScreen"));
 const WaitingRoom = lazy(() => import("./pages/WaitingRoom"));
 const ConsultationRoom = lazy(() => import("./pages/ConsultationRoom"));
 const SummaryScreen = lazy(() => import("./pages/SummaryScreen"));
+const DoctorPortal = lazy(() => import("./pages/DoctorPortal"));
+const DoctorRegister = lazy(() => import("./pages/DoctorRegister"));
+const DoctorLogin = lazy(() => import("./pages/DoctorLogin"));
+const DoctorDashboard = lazy(() => import("./pages/DoctorDashboard"));
+const DoctorConsultation = lazy(() => import("./pages/DoctorConsultation"));
 
 function AudioHelpButton() {
   const { t } = useTranslation();
@@ -21,6 +27,7 @@ function AudioHelpButton() {
     "/": t("selectLanguage"),
     "/login": t("loginTitle"),
     "/dashboard": t("dashboardTitle"),
+    "/symptoms": "AI symptom triage",
     "/vitals": t("vitalsTitle"),
     "/waiting": t("waitingTitle"),
     "/consultation": t("consultationTitle"),
@@ -74,10 +81,16 @@ export default function App() {
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/symptoms" element={<SymptomsScreen />} />
           <Route path="/vitals" element={<VitalsScreen />} />
           <Route path="/waiting" element={<WaitingRoom />} />
           <Route path="/consultation" element={<ConsultationRoom />} />
           <Route path="/summary" element={<SummaryScreen />} />
+          <Route path="/doctor" element={<DoctorPortal />} />
+          <Route path="/doctor/register" element={<DoctorRegister />} />
+          <Route path="/doctor/login" element={<DoctorLogin />} />
+          <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+          <Route path="/doctor/consultation/:consultationId" element={<DoctorConsultation />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

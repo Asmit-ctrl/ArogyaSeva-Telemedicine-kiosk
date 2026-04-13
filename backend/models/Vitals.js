@@ -18,7 +18,18 @@ const vitalsSchema = new mongoose.Schema(
     bloodPressure: String,
     temperature: Number,
     oxygenLevel: Number,
+    glucoseLevel: Number,
     weight: Number,
+    heightCm: Number,
+    bmi: Number,
+    ecgSummary: {
+      type: String,
+      trim: true,
+    },
+    assistantName: {
+      type: String,
+      trim: true,
+    },
     recordedAt: {
       type: Date,
       default: Date.now,

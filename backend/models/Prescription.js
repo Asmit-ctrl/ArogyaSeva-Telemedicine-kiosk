@@ -33,6 +33,20 @@ const prescriptionSchema = new mongoose.Schema(
       type: [medicineSchema],
       default: [],
     },
+    pharmacyFulfilment: {
+      provider: {
+        type: String,
+        trim: true,
+      },
+      mode: {
+        type: String,
+        trim: true,
+      },
+      eta: {
+        type: String,
+        trim: true,
+      },
+    },
   },
   { timestamps: { createdAt: true, updatedAt: false } }
 );

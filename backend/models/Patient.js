@@ -16,23 +16,47 @@ const patientSchema = new mongoose.Schema(
     },
     age: {
       type: Number,
-      required: true,
+      default: 0,
       min: 0,
     },
     gender: {
       type: String,
-      required: true,
       enum: ["male", "female", "other"],
+      default: "other",
     },
     mobileNumber: {
       type: String,
       required: true,
       trim: true,
     },
+    aadhaarId: {
+      type: String,
+      trim: true,
+    },
     village: {
       type: String,
-      required: true,
+      default: "Walk-in",
       trim: true,
+    },
+    preferredLanguage: {
+      type: String,
+      default: "en",
+      trim: true,
+    },
+    chronicConditions: {
+      type: [String],
+      default: [],
+    },
+    emergencyContact: {
+      type: String,
+      trim: true,
+    },
+    visitCount: {
+      type: Number,
+      default: 0,
+    },
+    lastVisitAt: {
+      type: Date,
     },
   },
   { timestamps: { createdAt: true, updatedAt: false } }
